@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB; //Import DB or use \DB on line 15
+use App\Post; //Eloquent Model
+
 //---------------------TIP------------------------------------------
 //Can generate controller via CLI using "php artisan make:controller PostsController"
 //------------------------------------------------------------------
@@ -10,11 +13,10 @@ class PostsController
 {
   public function show($slug)
   {
-    //Posts are now stored in MySQL database
-    $post = \DB::table('posts')->where('slug', $slug)->first();
 
     return view('posts', [
-      'post' => $post
+      'post' => Post::where('slug', $slug)->firstOrFail()
     ]);
+
   }
 }
