@@ -8,19 +8,13 @@ namespace App\Http\Controllers;
 //Moved from web.php
 class PostsController
 {
-  public function show($post)
+  public function show($slug)
   {
-    $posts = [
-      'my-first-post' => 'Hello, this is my first blog post!',
-      'my-second-post' => "Now I am getting the hang of this blogging thing."
-    ];
-    //Return 404 if no posts are associated with route.
-    if (!array_key_exists($post, $posts)) {
-      abort(404, 'SOrry this post was not found.');
-    }
-    //Return Posts View
+    //Posts are now stored in MySQL database
+    $post = \DB::table('posts')->where('slug', $slug)->first();
+
     return view('posts', [
-      'post' => $posts[$post]
+      'post' => $post
     ]);
   }
 }

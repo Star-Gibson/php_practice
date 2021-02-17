@@ -8,6 +8,7 @@
 </head>
 <body>
   <h1>Blog Blog City</h1>
-  <p>{{ $post }}</p>
+  <!-- You no longer want the object, you want the body property -->
+  <p>{{ $post->body }}</p>
 </body>
 </html>
