@@ -13,9 +13,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/posts/{post}', function ($post) {
-   
-// });
-
-//PostsController Routes
-Route::get('/posts/{post}', "PostsController@show");
